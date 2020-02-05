@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1580646511276.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4FDDC6EF",
+    "lastKnownWriteTime" : 1580929275,
+    "last_content_update" : 1580929275721,
+    "path" : "D:/OneDrive/Studia podyplomowe/Data_Scientist_Kraków/Uczenie Maszynowe - Praca zaliczeniowa/R_Project_Loans_Paid_Predictions/Projekt_Zaliczeniowy_Loans_Predictions/Rozpoznanie_Danych.R",
+    "project_path" : "Rozpoznanie_Danych.R",
+    "properties" : {
+        "cursorPosition" : "5,44",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
