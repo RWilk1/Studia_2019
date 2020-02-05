@@ -1,2 +1,2 @@
 # Studia_2019
-# Projekt zaliczeniowy - przedmiot eksploracja danych i uczenie maszynowe
+# Projekt Zaliczeniowy - Przedmioty eksploracja danych i uczenie maszynowe
