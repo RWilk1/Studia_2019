@@ -13,7 +13,10 @@ dir(getwd())
 installed.packages()
 
 # Instalowanie pakietu do wczytywania danych w EXCEL-u
-install.packages()
-help(install.packages)
+install.packages(readxl)
+
+library(readxl)
+dataset <- read_excel("LoanStats_DataSet.xlsx")
+View(dataset)
 
 # Wczytanie pliku z danymi do projektu
