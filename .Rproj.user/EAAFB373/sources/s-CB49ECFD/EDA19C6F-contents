@@ -1,0 +1,130 @@
+#############################
+#keybord and monitor
+#############################
+scan()
+dat <- scan()
+dat
+dat <-readline()
+print(dat)
+cat(dat)
+cat(dat,"abc", "de\n","efg")
+print(dat,"abc", "de\n","efg")
+cat(dat,"abc", "de\n","efg", sep = ";")
+
+#############################
+#Files
+#############################
+mydata <- read.table(file.choose(), header = TRUE)
+mydata
+#The R working directory
+getwd()
+setwd(paste(getwd(),"/datadir", sep = ""))
+
+#File info
+dir(getwd())
+file.info("filename.mydat")
+file.exists("filename.mydat")
+?files
+
+#Writing to a file
+mydat<-data.frame(x1=c(2,2,3,3,1,1), x2=c(.3, 1, 2.1, 2.2, .1, .2), x3=0.01*c(1,11,4,2,10,6))
+write.table(mydat,"filename.mydat")
+write.table(mydat,file="datatest.txt",
+            row.names=FALSE,col.names=FALSE,sep=", ")
+
+rm(mydat)
+
+#Reading data from a text file
+mydat<-read.table("filename.mydat", header=TRUE)
+mydat
+mydat<-read.table("filename.mydat", header=TRUE, skip=3, nrow=2)
+mydat
+
+#writing functions
+cat("Test file for cat\n",round(rnorm(5),3),"\n", 
+    file="cattest.txt")
+
+lin<-c("Count down", paste(rev(1:10), collapse="-"), 
+       "Go")
+writeLines(lin, con="writelinestest.txt")
+
+dir(getwd())
+
+#############################
+#Connections
+#############################
+?connection
+c <- file("names.txt","r")
+c
+readLines(c,n=1)
+close(c)
+
+c <- file("names.txt","r")
+while(TRUE) {
+  rl <-readLines(c,n=1)
+  if (length(rl) ==0) {
+    cat("reached the end")
+    break
+  } else cat(rl,"\n")
+}
+close(c)
+
+c <- file("names.txt","r")
+readLines(c,n=2)
+seek(con = c, where  = 0)
+readLines(c,n=1)
+close(c)
+
+#URLs
+souvenir <- scan("http://robjhyndman.com/tsdldata/data/fancy.dat")
+souvenir
+
+urlfile <-'https://raw.githubusercontent.com/hadley/fueleconomy/master/data-raw/vehicles.csv'
+x <- read.csv(urlfile)
+head(x)
+
+#Reading from SQL databases}
+
+library(RODBC)
+
+connStr <- paste(
+  "Server=ms",
+  "Database=master",
+  "trusted_connection=true",
+  "Driver={SQL Server}",
+  sep=";"
+)
+
+if(.Platform$OS.type != "windows"){
+  connStr <- paste(
+    "Server=ms",
+    "Database=master",
+    "uid=PBIlogin",
+    "pwd=P@ssw0rd",
+    "Driver=FreeTDS",
+    "TDS_Version=8.0",
+    "Port=1433",
+    sep=";"
+  )    
+}
+
+conn <- odbcDriverConnect(connStr)
+
+
+#Getting a table
+
+mf <- sqlFetch(conn,"sys.databases")
+mf
+
+#Submit real SQL
+
+query <- "
+SELECT name, recovery_model
+FROM   sys.databases 
+WHERE  database_id > 4
+"
+sqlQuery(conn, query)
+
+close(conn)
+
+

@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1580935205734.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1580458931",
+    "id" : "64B98F1A",
+    "lastKnownWriteTime" : 1572217051,
+    "last_content_update" : 1572217051,
+    "path" : "D:/OneDrive/Studia podyplomowe/Data_Scientist_Kraków/R Language - Skrypty/Biblioteki.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
