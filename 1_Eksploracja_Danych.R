@@ -5,6 +5,7 @@
 # Adres GitHub: https://github.com/RWilk1/Studia_2019.git
 # SSH: git@github.com:RWilk1/Studia_2019.git
 
+
 # Sprawdzanie lokalizacji katalogu roboczego
 getwd()
 dir(getwd())
@@ -15,8 +16,14 @@ installed.packages()
 # Instalowanie pakietu do wczytywania danych w EXCEL-u
 install.packages(readxl)
 
+# Wczytanie pliku z danymi do projektu
 library(readxl)
 dataset <- read_excel("LoanStats_DataSet.xlsx")
 View(dataset)
 
-# Wczytanie pliku z danymi do projektu
+# Przegląd kolumn w zbiorze danych
+colnames(dataset)
+
+
+
+

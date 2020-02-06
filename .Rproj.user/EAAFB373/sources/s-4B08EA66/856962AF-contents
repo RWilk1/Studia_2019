@@ -1,0 +1,211 @@
+###############################
+# Exploratory Data Analysis
+###############################
+install_course_zip("c:/Users/Szelor/Downloads/swirl_courses-master.zip", 
+                   multi = TRUE, which_course = "Data Analysis")
+
+# Examining a data set
+iris
+names(iris)
+object.size(iris)
+str(iris)
+head(iris)
+attach(iris)
+
+# Central tendency
+mean(Sepal.Length)
+median(Sepal.Length)
+
+mode(Species)
+tapply(Species,Species,length)
+which.max(tapply(Species,Species,length))
+names(which.max(tapply(Species,Species,length)))
+
+
+# Dispersion 
+min(Sepal.Length)
+apply(iris,2,min)
+max(Sepal.Length)
+range(Sepal.Length)
+var(Sepal.Length)
+sd(Sepal.Length)
+IQR(Sepal.Length)
+summary(Sepal.Length)
+
+# Contingency Tables
+exercise <- sample(c("none","moderate","high"),200, replace = TRUE)
+grade <- sample(c("2","3","4","5"),200, replace = TRUE)
+sleep <- sample(c("plenty","moderate","little",NA), 200, replace = TRUE)
+df <- data.frame(exercise,grade,sleep)
+head(df)
+
+for (i in 1:200) {
+  if (df$grade [ i ]=="1") 
+    { df$points [ i ]= round (runif (1,90,100)) 
+    } else {
+      if (df$grade [ i ]=="2") { 
+        df$points [ i ]= round (runif (1,80,89)) 
+        } else { 
+          if (df$grade [ i ]=="3") { 
+            df$points [ i ]= round (runif (1,70,79)) 
+            } else { 
+              if (df$grade [ i ]=="4") {
+                df$points [ i ]= round (runif (1,60,69)) 
+                } else {
+                  df$points [ i ]= round (runif (1,1,59)) 
+                }
+            }
+        }
+    }
+  }
+head(df)
+table(sleep)  
+table(sleep, exclude = NULL)
+
+freq <- table(df$grade, df$sleep, useNA = "always" )
+freq
+margin.table(freq,1) #rows
+margin.table(freq,2) #columns
+round(prop.table(freq),4)*100
+
+freq <- table(df$grade, df$sleep,df$exercise)
+freq
+ftable(freq)
+
+x <- round(runif(100,0,10))
+x
+freq <- table(x)
+freq
+cumfreq <- cumsum(freq)
+cumfreq
+data.frame(freq,cumfreq)
+
+###############################
+# Visualising distributions
+###############################
+library(tidyverse)
+# Variation
+
+ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = cut))
+diamonds %>% 
+  count(cut)
+
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = carat), binwidth = 0.5)
+diamonds %>% 
+  count(cut_width(carat, 0.5))
+
+smaller <- diamonds %>% 
+  filter(carat < 3)
+ggplot(data = smaller, mapping = aes(x = carat)) +
+  geom_histogram(binwidth = 0.1)
+
+ggplot(data = smaller, mapping = aes(x = carat, colour = cut)) +
+  geom_freqpoly(binwidth = 0.1)
+
+# Typical values
+ggplot(data = smaller, mapping = aes(x = carat)) +
+  geom_histogram(binwidth = 0.01)
+
+ggplot(data = faithful, mapping = aes(x = eruptions)) + 
+  geom_histogram(binwidth = 0.25)
+
+# Unusual values
+ggplot(diamonds) + 
+  geom_histogram(mapping = aes(x = y), binwidth = 0.5)
+
+ggplot(diamonds) + 
+  geom_histogram(mapping = aes(x = y), binwidth = 0.5) +
+  coord_cartesian(ylim = c(0, 50))
+
+unusual <- diamonds %>% 
+  filter(y < 3 | y > 20) %>% 
+  arrange(y)
+unusual
+
+# Missing values
+diamonds2 <- diamonds %>% 
+  mutate(y = ifelse(y < 3 | y > 20, NA, y))
+
+ggplot(data = diamonds2, mapping = aes(x = x, y = y)) + 
+  geom_point()
+ggplot(data = diamonds2, mapping = aes(x = x, y = y)) + 
+  geom_point(na.rm = TRUE)
+
+nycflights13::flights %>% 
+  mutate(
+    cancelled = is.na(dep_time),
+    sched_hour = sched_dep_time %/% 100,
+    sched_min = sched_dep_time %% 100,
+    sched_dep_time = sched_hour + sched_min / 60
+  ) %>% 
+  ggplot(mapping = aes(sched_dep_time)) + 
+  geom_freqpoly(mapping = aes(colour = cancelled), binwidth = 1/4)
+
+###############################
+# Covariation
+###############################
+
+# A categorical and continuous variable
+ggplot(data = diamonds, mapping = aes(x = price)) + 
+  geom_freqpoly(mapping = aes(colour = cut), binwidth = 500)
+
+ggplot(diamonds) + 
+  geom_bar(mapping = aes(x = cut))
+
+ggplot(data = diamonds, mapping = aes(x = price, y = ..density..)) + 
+  geom_freqpoly(mapping = aes(colour = cut), binwidth = 500)
+
+ggplot(data = diamonds, mapping = aes(x = cut, y = price)) +
+  geom_boxplot()
+ggplot(data = diamonds, mapping = aes(x = cut, y = price)) +
+  geom_violin()
+
+ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
+  geom_boxplot()
+
+ggplot(data = mpg) +
+  geom_boxplot(mapping = aes(x = reorder(class, hwy, FUN = median), y = hwy)) +
+  coord_flip()
+
+# Two categorical variables
+ggplot(data = diamonds) +
+  geom_count(mapping = aes(x = cut, y = color))
+
+diamonds %>% 
+  count(color, cut)
+
+diamonds %>% 
+  count(color, cut) %>%  
+  ggplot(mapping = aes(x = color, y = cut)) +
+  geom_tile(mapping = aes(fill = n))
+
+# Two continuous variables
+ggplot(data = diamonds) +
+  geom_point(mapping = aes(x = carat, y = price))
+
+ggplot(data = diamonds) + 
+  geom_point(mapping = aes(x = carat, y = price), alpha = 1 / 100)
+ggplot(data = smaller) +
+  geom_bin2d(mapping = aes(x = carat, y = price))
+ggplot(data = smaller) +
+  geom_hex(mapping = aes(x = carat, y = price))
+ggplot(data = smaller, mapping = aes(x = carat, y = price)) + 
+  geom_boxplot(mapping = aes(group = cut_width(carat, 0.1)))
+ggplot(data = smaller, mapping = aes(x = carat, y = price)) + 
+  geom_boxplot(mapping = aes(group = cut_number(carat, 20)))
+
+# Patterns 
+ggplot(data = faithful) + 
+  geom_point(mapping = aes(x = eruptions, y = waiting))
+
+library(modelr)
+mod <- lm(log(price) ~ log(carat), data = diamonds)
+diamonds2 <- diamonds %>% 
+  add_residuals(mod) %>% 
+  mutate(resid = exp(resid))
+ggplot(data = diamonds2) + 
+  geom_point(mapping = aes(x = carat, y = resid))
+ggplot(data = diamonds2) + 
+  geom_boxplot(mapping = aes(x = cut, y = resid))
