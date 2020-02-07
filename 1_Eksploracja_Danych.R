@@ -20,6 +20,7 @@ install.packages(readxl)
 library(readxl)
 dataset <- read_excel("LoanStats_DataSet.xlsx")
 View(dataset)
+help(sum)
 
 # Przegląd kolumn w zbiorze danych
 colnames(dataset)
