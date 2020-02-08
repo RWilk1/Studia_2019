@@ -1,0 +1,15 @@
+"0","knitr::opts_chunk$set(echo = TRUE)"
+"2","Komunikaty ostrzegawcze:
+"
+"2","1: "
+"2","W poleceniu 'native_encode(options$fig.path)':"
+"2","
+ "
+"2"," some characters may not work under the current locale
+"
+"2","2: "
+"2","W poleceniu 'native_encode(options$fig.path)':"
+"2","
+ "
+"2"," some characters may not work under the current locale
+"

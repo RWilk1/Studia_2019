@@ -1,10 +1,11 @@
 
-# _**TESTY**_
+# _**Data Science - Programowanie, Analiza i Wizualizacja Danych**_
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+F
 
 Obliczanie kwoty wydanej na kawę za pomocą wartości przypisanych do zmiennych
 ```{r}
@@ -43,7 +44,9 @@ When you click the **Knit** button a document will be generated that includes bo
 summary(cars)
 ```
 
+Przeglądanie załadowanych pakietów
 ```{r}
+search()
 ```
 
 

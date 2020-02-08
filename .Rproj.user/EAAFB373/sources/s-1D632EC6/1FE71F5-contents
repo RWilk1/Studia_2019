@@ -26,5 +26,5 @@ help(sum)
 colnames(dataset)
 
 
-
+.libPaths()
 

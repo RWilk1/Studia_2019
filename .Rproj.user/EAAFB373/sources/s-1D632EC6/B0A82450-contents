@@ -1,0 +1,8 @@
+
+Make_Full_Name <- function(first_name, last_name) {
+  Full_Name <- paste(first_name, last_name)
+}
+
+# Wywołanie funkcji make_full_name() z argumentami "Alicja" i "Kot".
+my_name <- Make_Full_Name("Alicja", "Kot")
+my_name 
