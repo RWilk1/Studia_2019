@@ -30,6 +30,13 @@ Table Cell | Cell 2
 Cell 3 | Cell 4
 
 
+**Funkcje**
+Czyli nazwane napisane już algorytmy, sekwencje instrukcji
+Funkcje wbudowane: https://www.statmethods.net/management/functions.html
+``` {r}
+print(round(digits = 3, 3.1415))
+```
+
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r cars}
