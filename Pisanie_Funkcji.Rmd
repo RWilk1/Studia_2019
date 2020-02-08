@@ -45,7 +45,7 @@ if (porridge_temp > 120) { # Jeśli to wyrażenie ma wartość TRUE,
 ```
 
 
-**Tworzenie funkji wraz z instrukjcą if**
+**Tworzenie funkcji wraz z instrukjcą if**
 ```{r}
 # Funkcja określająca, czy powinieneś zjeść owsiankę.
 test_food_temp <- function(temp) {
