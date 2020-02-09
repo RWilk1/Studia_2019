@@ -219,7 +219,88 @@ more_people <- c(people, "Jacek")
 print(more_people)
 ```
 
+**Listy** (List)  – Jest to uporządkowany zbiór elementów w przeciwieństwie do wektora listy mogą zawierać dane różnych typów nawet inne listy. Poszczególne elementy listy mogą mieć również nazwy. Konstruktorem listy jest funkcja list().
+```{r}
+person <- list(
+  first_name = "Ada",
+  job = "Programistka",
+  salary = 78000,
+  in_union = TRUE)
+
+print(person)
+#Funkcja zwraca nazwy elementów listy
+names(person)
+```
+
+1. Listy, której wartością jest inna lista
+```{r}
+# Tworzenie listy person zawierającej listę ulubionych rzeczy.
+person <- list(
+  first_name = "Ada",
+  job = "Programistka",
+  salary = 78000,
+  in_union = TRUE,
+  favorites = list(
+    music = "jazz",
+    food = "pizza"))
+
+print(person)
+# Dostęp do listy zagnieżdzonej w innej liście
+person$favorites$music
+```
+
+2. Dostęp do różnych elementów listy
+```{r}
+# Tworzenie listy person.
+person <- list(
+  first_name = "Ada",
+  job = "Programistka",
+  salary = 78000,
+  in_union = TRUE)
+
+# Wskazywanie elementów o określonych etykietach z listy person.
+person$first_name # [1] "Ada"
+person$salary # [1] 78000
+
+# Można uzyskać dostęp za pomocą indeksu liczbowego, trzeba indeks otoczyć [[]]
+person[[1]]
+person[[2]]
+person[["salary"]]
+```
+
+3. Modyfikowanie elementów listy
+```{r}
+# Tworzenie listy person.
+person <- list(
+  first_name = "Ada",
+  job = "Programistka",
+  salary = 78000,
+  in_union = TRUE)
+
+# Obecnie element age nie istnieje (ma wartość NULL).
+person$age # NULL
+
+# Przypisywanie wartości do (nowej) etykiety age.
+person$age <- 40
+person$age # [1] 40
+
+# Ponowne przypisywanie wartości do elementu job na liście.
+person$job <- "Starsza programistka" # Awans!
+print(person$job)
+
+# [1] "Starsza programistka"
+# Ponowne przypisywanie wartości do elementu salary (z wykorzystaniem bieżącej wartości).
+
+person$salary <- person$salary * 1.15 # 15 procent podwyżki!
+print(person$salary)
 
 
+# Usuwanie etykiety first_name, aby dana osoba była anonimowa.
+person$first_name <- NULL
 
+# Sprawdzanie, czy zwracana wartość to lista
+is.list(person[["first_name"]])
+```
+
+4. NULL i NA to nie jest to samo. NULL oznacza wartość nieznaną natomiast NA wartości której nie ma.
 
