@@ -304,3 +304,106 @@ is.list(person[["first_name"]])
 
 4. NULL i NA to nie jest to samo. NULL oznacza wartość nieznaną natomiast NA wartości której nie ma.
 
+**Ramki danych**
+
+1. Tworzenie ramek danych
+```{r}
+# Tworzenie ramki danych w wyniku przekazania wektora do funkcji data.frame().
+# Wektor imion.
+name <- c("Ada", "Bartek", "Cyryl", "Daria", "Ela")
+
+# Wektor wysokości.
+height <- c(64, 74, 69, 69, 71)
+
+# Wektor wagi.
+weight <- c(135, 156, 139, 144, 152)
+
+# Łączenie wektorów w ramkę danych.
+# Zauważ, że nazwy zmiennych stają się nazwami kolumn.
+people <- data.frame(name, height, weight, stringsAsFactors = FALSE)
+print(people)
+```
+2. Bardziej zwięzły sposób tworzenia Ramek Danych
+```{r}
+# Tworzenie ramki danych z imionami, wagami i wzrostami.
+# Podawane są tu używane nazwy kolumn.
+people <- data.frame(
+  name = c("Ada", "Bartek", "Cyryl", "Daria", "Ela"),
+  height = c(64, 74, 69, 69, 71),
+  weight = c(135, 156, 139, 144, 152))
+
+people
+
+# Odwoływanie się do poszczególnych elementów Data Frame-u
+# Pobieranie kolumny weight (jako elementu listy); ta instrukcja zwraca wektor.
+people_weights <- people$weight
+people_weights
+# Pobieranie kolumny height (jako elementu listy); ta instrukcja zwraca wektor.
+people_heights <- people[["height"]]
+people_heights
+```
+
+3. Funkcje ramek danych
+```{r}
+people <- data.frame(
+  name = c("Ada", "Bartek", "Cyryl", "Daria", "Ela"),
+  height = c(64, 74, 69, 69, 71),
+  weight = c(135, 156, 139, 144, 152))
+
+nrow(people) #Zwraca liczbę wierszy w ramce danych.
+ncol(people) #Zwraca liczbę kolumn w ramce danych.
+dim(people)  #Zwraca wymiary ramek danych (wierszy i kolumn)
+colnames(people) #wraca nazwy kolumn w ramce danych.
+rownames(people) #Zwraca nazwy wierszy w ramce danych.
+head(people) #Zwraca kilka pierwszych wierszy ramki danych (jako nową ramkę).
+tail(people) #Zwraca kilka ostatnich wierszy ramki danych (jako nową ramkę).
+View(people) # Otwiera ramkę danych w oknie podobnym do arkusza
+#kalkulacyjnego (tylko w środowisku RStudio).
+```
+
+4. Dostęp do ramki danych za pomocą notacji z pojedynczym nawiasem kwadratowym
+```{r}
+people <- data.frame(
+  name = c("Ada", "Bartek", "Cyryl", "Daria", "Ela"),
+  height = c(64, 74, 69, 69, 71),
+  weight = c(135, 156, 139, 144, 152))
+
+people[2, 3] # numer wiersza i numer kolumny
+people[2, "height"]
+people[,"height"] # wszystkie wiersze z kolumny height
+
+# Przypisywanie zestawu nazw wierszy do wektora.
+# Używane są tu wartości z kolumny name.
+rownames(people) <- people$name
+
+# Pobieranie wiersza z imieniem "Ada" (i wszystkich kolumn).
+people["Ada", ] # Zwróć uwagę na oznaczający wszystkie kolumny przecinek.
+
+# Pobieranie drugiej kolumny jako ramki danych (filtrowanie).
+people["height"] # Bez przecinka - zwracana jest ramka danych.
+
+# Pobieranie kolumn height i weight.
+people[, c("height", "weight")] # Zwróć uwagę na przecinek oznaczający wszystkie wiersze.
+
+# Pobieranie wierszy od drugiego do czwartego.
+people[2:4, ] # Zwróć uwagę na przecinek oznaczający wszystkie kolumny.
+
+# Pobieranie wierszy (z wszystkimi kolumnami), w których people$height ma wartość ponad 70.
+people[people$height > 70, ] # Zwraca wiersze, w których height ma wartość ponad 70.
+
+# Funkcja sprawdza czy obiekt jest ramką danych
+is.data.frame(people)
+
+# Funkcja zmienająca obiekt na ramkę danych
+as.data.frame(people)
+
+# Zapisywanie danych z ramki my_df w pliku my_new_file.csv.
+# Argument row.names informuje, czy nazwy wierszy
+# powinny zostać zapisane w pliku (zwykle nie).
+write.csv(people, "my_new_file.csv", row.names = FALSE)
+```
+
+
+
+
+
