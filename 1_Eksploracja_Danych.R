@@ -22,9 +22,28 @@ dataset <- read_excel("LoanStats_DataSet.xlsx")
 View(dataset)
 help(sum)
 
-# Przegląd kolumn w zbiorze danych
+# Przegląd zmiennych i ich wybór
 colnames(dataset)
 
+dataset[, 
+c("loan_status" # Status spłacania pożyczki - zmienna niezależna
+,"addr_state" # Stan pożyczkobiorcy
+,"annual_inc" # Roczne dochody
+,"application_type" # Liczba pożyczkobiorców
+,"delinq_2yrs" # Liczba 30 dniowych opóźnień w spłacie kredytu
+,"emp_length" # Długość zatrudnienia w latach
+,"emp_title" # Nazwa zawodu
+,"funded_amnt" # Kwota udzielonej pożyczki
+,"home_ownership" # Stan własnościowy mieszkania pożyczkobiorcy
+,"int_rate" # Oprocentowanie pożyczki
+,"issue_d" # Data udzielenia pożyczki
+,"loan_amnt" # Kwota pożyczki, ewentualnie zmniejszona p
+,"purpose" # Cel pożyczki
+, "term" # Liczba lat do spłacenia
+)]
 
-.libPaths()
+# Ze względu na zawartość danych w poszczególnych kolumnach
+# do dalszej analizy zostaną wybrane następujące zmienne
+
+
 

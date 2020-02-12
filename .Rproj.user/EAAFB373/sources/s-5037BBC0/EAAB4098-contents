@@ -1,0 +1,409 @@
+---
+title: "Struktury Danych"
+author: 'autor: RW'
+date: 'Data: 08.02.2020'
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**WEKTORY TO PODSTAWOWA STRUKTURA DO PRZECHOWYWANIA DANYCH W R**
+
+1. Wektory tekstowe
+```{r}
+# Używanie funkcji c() do tworzenia wektora wartości znakowych.
+people <- c("Sara", "Alan", "Zenon")
+print(people)
+```
+
+2. Wektory liczbowe
+```{r}
+# Używanie funkcji c() do tworzenia wektora wartości liczbowych.
+numbers <- c(1, 2, 3, 4, 5)
+print(numbers)
+```
+
+3. Wektory z nazwanymi wartościami
+```{r}
+# Nazwane argumenty
+numbers <- c(jeden = 1, dwa = 2, trzy = 3)
+print(numbers)
+```
+
+4. Funkcja seq() tworzy sekwencje wartości
+```{r}
+# Używanie funkcji seq() do tworzenia wektora liczb od 1 do 70 (włącznie).
+one_to_seventy <- seq(1, 10)
+print(one_to_seventy)
+# Tworzenie wektora liczb od 1 do 10, przy czym dodawana jest tylko co druga liczba.
+odds <- seq(1, 10, 2)
+print(odds)
+# Używanie operatora dwukropka (:) jako skrótowego wywołania funkcji seq().
+one_to_seventy <- 1:70
+```
+
+5. Operacje wykonywane na wektorach (operacje wektorowe). Każdy element jednego wektora jest dodany do odpowiadającemu mu elementowi drugiego wektora
+```{r}
+v1 <- c(3,1,4,1,4)
+v2 <- c(1,6,1,8,0)
+v3 <- v1 + v2
+print(v1)
+print(v2)
+print(v3)
+```
+
+6. Recykling wartości wektora. Gdy w operacjach wektorowych jeden wektor jest krótszy od innego. to wartości tego krótszego wektora są używane ponownie.
+```{r}
+# Tworzenie dodawanych wektorów.
+v1 <- c(1, 3, 5, 1, 5)
+v2 <- c(1, 2)
+# Dodawanie wektorów.
+v3 <- v1 + v2 # Zwraca 2 5 6 3 6.
+print(v3)
+```
+
+
+7. Dodawanie do wektora zwykłej wartości skalarnej. Do każdej wartości wektora zostanie dodana wartość skalarna.
+```{r}
+# Dodawanie jednej wartości do wektora.
+v1 <- 1:5 # Tworzenie wektora liczb od 1 do 5.
+result <- v1 + 4 # Dodawanie wartości skalarnej do wektora.
+print(result)
+```
+
+8. Nawet pojedyncza wartość (numeryczna, tekstowa) jest wektorem
+```{r}
+# Potwierdzenie, że typy podstawowe są zapisywane jako wektory.
+is.vector(18) # TRUE
+is.vector("Witaj") # TRUE
+is.vector(TRUE) # TRUE
+```
+
+9. Działania wektorowe to działania element po elemencie. Jeżeli na wektorze wykonuje się jakąś funkcje to ta funkcja wykonywana jest na każdym elemcie danego wektora
+
+10. Zaokrąglanie elementów wektora
+```{r}
+# Tworzenie Vwektora liczb.
+nums <- c(3.98, 8, 10.8, 3.27, 5.21)
+# Wykonywanie operacji wektorowej.
+rounded_nums <- round(nums, 1)
+print(rounded_nums)
+```
+
+11. Zwracanie długości znaków każdego elementu wektora
+```{r}
+# Tworzy wektor introductions, a następnie zlicza
+# znaki w każdym elemencie.
+introductions <- c("Hej", "Witaj", "Cześć")
+nchar(introductions)
+```
+
+12. Dlatego że R wykonuje operacje na wektorach nie trzeba używanych w nim pętli
+
+13. Indeksy w wektorach - czyli numery pozycji wartości wektorów.
+Numerowanie indeksów w wektorach rozpoczyna się od 1, a nie od 0.
+Nawiasy klamrowe [] służą do wybierania konkretnej wartości z wektora
+
+```{r}
+# Tworzenie wektora people.
+people <- c("Sara", "Alan", "Zenon")
+# Dostęp do elementu o indeksie 1.
+first_person <- people[1]
+print(first_person)
+```
+
+14. Jeśli w indeksie poda się wartość ujemną wówczas zwróci się wszystkie wartości poza wartością ze wskazanym indeksem
+
+```{r}
+vowels <- c("a", "e", "i", "o", "u")
+# Zwracanie wszystkich elementów OPRÓCZ tego o indeksie 2.
+all_but_e <- vowels[-2]
+print(all_but_e)
+```
+
+15. W nawiasach klamrowych można także podawać listę indeksów np. [1,2,3]
+```{r}
+# Tworzenie wektora colors.
+colors <- c("czerwony", "zielony", "niebieski", "żółty", "fioletowy")
+
+# Wektor indeksów elementów pobieranych z wektora colors.
+indices <- c(1, 3, 4)
+
+# Pobieranie kolorów o podanych indeksach.
+extracted <- colors[indices]
+print(extracted)
+
+# Podawanie anonimowego wektora indeksów.
+others <- colors[c(2, 5)]
+print(others)
+
+# Pobieranie wartości z pozycji od 2 do 5.
+print(colors[2:5])
+```
+
+16. Filtrowanie wektorów
+```{r}
+# Tworzenie wektora z rozmiarami butów.
+shoe_sizes <- c(5.5, 11, 7, 8, 4)
+
+# Wektor wartości logicznych (do filtrowania wektora shoe_sizes).
+filter <- c(TRUE, FALSE, FALSE, FALSE, TRUE)
+
+# Pobieranie każdego elementu, na którego pozycji podano wartość TRUE.
+print(shoe_sizes[filter])
+```
+
+17. Operacja filtrowania za pomocą testowania wartości i uzyskiwania wartości logicznych
+```{r}
+# Tworzenie wektora z rozmiarami butów.
+shoe_sizes <- c(5.5, 11, 7, 8, 4)
+print(shoe_sizes)
+
+# Tworzenie wektora wartości logicznych określającego, czy rozmiar jest mniejszy niż 6.5.
+shoe_is_small <- shoe_sizes < 6.5 # Zwraca T F F F T.
+print(shoe_is_small)
+
+# Używanie wektora shoe_is_small do pobierania butów w małych rozmiarach.
+small_shoes <- shoe_sizes[shoe_is_small] 
+print(small_shoes)
+```
+
+18. Modyfikowanie wektorów
+```{r}
+# Tworzenie wektora prices.
+prices <- c(25, 28, 30)
+
+# Modyfikacja pierwszej ceny na 20.
+prices[1] <- 20
+print(prices)
+
+# Tworzenie wektora prices.
+prices <- c(25, 28, 30)
+
+# Dodawanie czwartej ceny.
+prices[4] <- 32
+print(prices)
+
+# Przypisywanie wartości 60 do szóstego elementu wektora.
+prices[6] <- 60
+print(prices)
+
+# Zastępowanie wszystkich wartości większych niż 10 liczbą 10.
+v1 <- c(1, 5, 55, 1, 3, 11, 4, 27)
+v1[v1 > 10] <- 10
+print(v1)
+```
+
+19. Zastępowanie pewnych elementów wektora innym wektorem
+```{r}
+# Tworzenie wektora z przyborami szkolnymi.
+school_supplies <- c("Plecak", "Laptop", "Długopis")
+print(school_supplies)
+
+# Zastępowanie wartości "Laptop" słowem "Tablet" i wartości "Długopis" słowem "Ołówek".
+school_supplies[c(2, 3)] <- c("Tablet", "Ołówek")
+print(school_supplies)
+```
+
+20. Łączenie wektorów
+```{r}
+# Używanie funkcji c() do utworzenia nowego wektora.
+people <- c("Sara", "Alan", "Zenon")
+
+# Używanie funkcji c() do złączenia wektora people z imieniem "Jacek".
+more_people <- c(people, "Jacek")
+print(more_people)
+```
+
+**Listy** (List)  – Jest to uporządkowany zbiór elementów w przeciwieństwie do wektora listy mogą zawierać dane różnych typów nawet inne listy. Poszczególne elementy listy mogą mieć również nazwy. Konstruktorem listy jest funkcja list().
+```{r}
+person <- list(
+  first_name = "Ada",
+  job = "Programistka",
+  salary = 78000,
+  in_union = TRUE)
+
+print(person)
+#Funkcja zwraca nazwy elementów listy
+names(person)
+```
+
+1. Listy, której wartością jest inna lista
+```{r}
+# Tworzenie listy person zawierającej listę ulubionych rzeczy.
+person <- list(
+  first_name = "Ada",
+  job = "Programistka",
+  salary = 78000,
+  in_union = TRUE,
+  favorites = list(
+    music = "jazz",
+    food = "pizza"))
+
+print(person)
+# Dostęp do listy zagnieżdzonej w innej liście
+person$favorites$music
+```
+
+2. Dostęp do różnych elementów listy
+```{r}
+# Tworzenie listy person.
+person <- list(
+  first_name = "Ada",
+  job = "Programistka",
+  salary = 78000,
+  in_union = TRUE)
+
+# Wskazywanie elementów o określonych etykietach z listy person.
+person$first_name # [1] "Ada"
+person$salary # [1] 78000
+
+# Można uzyskać dostęp za pomocą indeksu liczbowego, trzeba indeks otoczyć [[]]
+person[[1]]
+person[[2]]
+person[["salary"]]
+```
+
+3. Modyfikowanie elementów listy
+```{r}
+# Tworzenie listy person.
+person <- list(
+  first_name = "Ada",
+  job = "Programistka",
+  salary = 78000,
+  in_union = TRUE)
+
+# Obecnie element age nie istnieje (ma wartość NULL).
+person$age # NULL
+
+# Przypisywanie wartości do (nowej) etykiety age.
+person$age <- 40
+person$age # [1] 40
+
+# Ponowne przypisywanie wartości do elementu job na liście.
+person$job <- "Starsza programistka" # Awans!
+print(person$job)
+
+# [1] "Starsza programistka"
+# Ponowne przypisywanie wartości do elementu salary (z wykorzystaniem bieżącej wartości).
+
+person$salary <- person$salary * 1.15 # 15 procent podwyżki!
+print(person$salary)
+
+
+# Usuwanie etykiety first_name, aby dana osoba była anonimowa.
+person$first_name <- NULL
+
+# Sprawdzanie, czy zwracana wartość to lista
+is.list(person[["first_name"]])
+```
+
+4. NULL i NA to nie jest to samo. NULL oznacza wartość nieznaną natomiast NA wartości której nie ma.
+
+**Ramki danych**
+
+1. Tworzenie ramek danych
+```{r}
+# Tworzenie ramki danych w wyniku przekazania wektora do funkcji data.frame().
+# Wektor imion.
+name <- c("Ada", "Bartek", "Cyryl", "Daria", "Ela")
+
+# Wektor wysokości.
+height <- c(64, 74, 69, 69, 71)
+
+# Wektor wagi.
+weight <- c(135, 156, 139, 144, 152)
+
+# Łączenie wektorów w ramkę danych.
+# Zauważ, że nazwy zmiennych stają się nazwami kolumn.
+people <- data.frame(name, height, weight, stringsAsFactors = FALSE)
+print(people)
+```
+2. Bardziej zwięzły sposób tworzenia Ramek Danych
+```{r}
+# Tworzenie ramki danych z imionami, wagami i wzrostami.
+# Podawane są tu używane nazwy kolumn.
+people <- data.frame(
+  name = c("Ada", "Bartek", "Cyryl", "Daria", "Ela"),
+  height = c(64, 74, 69, 69, 71),
+  weight = c(135, 156, 139, 144, 152))
+
+people
+
+# Odwoływanie się do poszczególnych elementów Data Frame-u
+# Pobieranie kolumny weight (jako elementu listy); ta instrukcja zwraca wektor.
+people_weights <- people$weight
+people_weights
+# Pobieranie kolumny height (jako elementu listy); ta instrukcja zwraca wektor.
+people_heights <- people[["height"]]
+people_heights
+```
+
+3. Funkcje ramek danych
+```{r}
+people <- data.frame(
+  name = c("Ada", "Bartek", "Cyryl", "Daria", "Ela"),
+  height = c(64, 74, 69, 69, 71),
+  weight = c(135, 156, 139, 144, 152))
+
+nrow(people) #Zwraca liczbę wierszy w ramce danych.
+ncol(people) #Zwraca liczbę kolumn w ramce danych.
+dim(people)  #Zwraca wymiary ramek danych (wierszy i kolumn)
+colnames(people) #wraca nazwy kolumn w ramce danych.
+rownames(people) #Zwraca nazwy wierszy w ramce danych.
+head(people) #Zwraca kilka pierwszych wierszy ramki danych (jako nową ramkę).
+tail(people) #Zwraca kilka ostatnich wierszy ramki danych (jako nową ramkę).
+View(people) # Otwiera ramkę danych w oknie podobnym do arkusza
+#kalkulacyjnego (tylko w środowisku RStudio).
+```
+
+4. Dostęp do ramki danych za pomocą notacji z pojedynczym nawiasem kwadratowym
+```{r}
+people <- data.frame(
+  name = c("Ada", "Bartek", "Cyryl", "Daria", "Ela"),
+  height = c(64, 74, 69, 69, 71),
+  weight = c(135, 156, 139, 144, 152))
+
+people[2, 3] # numer wiersza i numer kolumny
+people[2, "height"]
+people[,"height"] # wszystkie wiersze z kolumny height
+
+# Przypisywanie zestawu nazw wierszy do wektora.
+# Używane są tu wartości z kolumny name.
+rownames(people) <- people$name
+
+# Pobieranie wiersza z imieniem "Ada" (i wszystkich kolumn).
+people["Ada", ] # Zwróć uwagę na oznaczający wszystkie kolumny przecinek.
+
+# Pobieranie drugiej kolumny jako ramki danych (filtrowanie).
+people["height"] # Bez przecinka - zwracana jest ramka danych.
+
+# Pobieranie kolumn height i weight.
+people[, c("height", "weight")] # Zwróć uwagę na przecinek oznaczający wszystkie wiersze.
+
+# Pobieranie wierszy od drugiego do czwartego.
+people[2:4, ] # Zwróć uwagę na przecinek oznaczający wszystkie kolumny.
+
+# Pobieranie wierszy (z wszystkimi kolumnami), w których people$height ma wartość ponad 70.
+people[people$height > 70, ] # Zwraca wiersze, w których height ma wartość ponad 70.
+
+# Funkcja sprawdza czy obiekt jest ramką danych
+is.data.frame(people)
+
+# Funkcja zmienająca obiekt na ramkę danych
+as.data.frame(people)
+
+# Zapisywanie danych z ramki my_df w pliku my_new_file.csv.
+# Argument row.names informuje, czy nazwy wierszy
+# powinny zostać zapisane w pliku (zwykle nie).
+write.csv(people, "my_new_file.csv", row.names = FALSE)
+```
+
+
+
+
+
