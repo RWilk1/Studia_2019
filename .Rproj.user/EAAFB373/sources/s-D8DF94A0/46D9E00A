@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1581624406965.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2859015098",
+    "id" : "46D9E00A",
+    "lastKnownWriteTime" : 1581629257,
+    "last_content_update" : 1581629257106,
+    "path" : "D:/OneDrive/Studia podyplomowe/Data_Scientist_Kraków/Uczenie Maszynowe - Praca zaliczeniowa/R_Project_Loans_Paid_Predictions/Projekt_Zaliczeniowy_Loans_Predictions/Laczenie_z_Bazami_Danych.Rmd",
+    "project_path" : "Laczenie_z_Bazami_Danych.Rmd",
+    "properties" : {
+        "cursorPosition" : "52,7",
+        "last_setup_crc32" : "D8DF94A0bb338d19",
+        "scrollLine" : "37",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

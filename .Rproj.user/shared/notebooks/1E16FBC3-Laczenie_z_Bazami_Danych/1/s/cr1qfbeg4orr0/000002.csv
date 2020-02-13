@@ -1,0 +1,39 @@
+"0","install.packages(""RODBC"")
+"
+"2","WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+"
+"2","Installing package into ‘C:/Users/Gwiazda_Smierci/Documents/R/win-library/3.5’
+(as ‘lib’ is unspecified)
+"
+"1","Warning in "
+"1",""
+"1","install.packages"
+"1",""
+"1"," :
+  "
+"1",""
+"1","unable to access index for repository http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/3.5:
+  nie moÅ¼na otworzyÄ‡ adresu URL 'http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/3.5/PACKAGES'"
+"1",""
+"1","
+"
+"2","prÃ³bowanie adresu URL 'https://mran.microsoft.com/snapshot/2018-08-01/bin/windows/contrib/3.5/RODBC_1.3-15.zip'
+"
+"2","Content type 'application/zip'"
+"2"," length 879575 bytes (858 KB)
+"
+"2","downloaded 858 KB
+
+"
+"1","package â€˜RODBCâ€™ successfully unpacked and MD5 sums checked
+"
+"1","
+"
+"1",""
+"1","The downloaded binary packages are in
+	C:\Users\Gwiazda_Smierci\AppData\Local\Temp\Rtmpo7odU1\downloaded_packages"
+"1",""
+"1","
+"
