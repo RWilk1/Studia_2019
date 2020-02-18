@@ -403,6 +403,28 @@ as.data.frame(people)
 write.csv(people, "my_new_file.csv", row.names = FALSE)
 ```
 
+5. Faktory, to struktura danych dla zmiennych nominalnych, zawiera w sobie unikatowe wartości danych zwane poziomem
+```{r}
+# Tworzenie faktorów
+
+# Na początku używany jest wektor łańcuchów znaków reprezentujących wielkość koszul.
+shirt_sizes <- c("small", "medium", "small", "large", "medium", "large")
+
+# Tworzenie faktora reprezentującego wcześniejszy wektor.
+shirt_sizes_factor <- as.factor(shirt_sizes)
+
+# Sprawdzanie czy stworzona zmienna jest faktorem
+is.factor(shirt_sizes_factor)
+
+
+# Wyświetlanie faktora i poziomów.
+print(shirt_sizes_factor)
+
+length(shirt_sizes_factor) # 6
+
+```
+
+Faktory umożliwiają wygodne wygodne grupowanie danych i ich przetwarzanie za pomocą specjalnych funkcji
 
 
 
