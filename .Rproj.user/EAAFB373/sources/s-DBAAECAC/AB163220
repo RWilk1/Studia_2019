@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1582216093007.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "AB163220",
+    "lastKnownWriteTime" : 1582216135,
+    "last_content_update" : 1582216135685,
+    "path" : "D:/OneDrive/Studia podyplomowe/Data_Scientist_Kraków/Uczenie Maszynowe - Praca zaliczeniowa/R_Project_Loans_Paid_Predictions/Projekt_Zaliczeniowy_Loans_Predictions/Porzadkowanie danych - tidyr.Rmd",
+    "project_path" : "Porzadkowanie danych - tidyr.Rmd",
+    "properties" : {
+        "cursorPosition" : "11,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
