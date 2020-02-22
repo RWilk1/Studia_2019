@@ -1,0 +1,7 @@
+"2","Ostrzeżenie w poleceniu 'gzfile(file, ""wb"")':"
+"2","
+ "
+"2"," nie można otworzyć skompresowanego pliku 'D:/OneDrive/Studia podyplomowe/Data_Scientist_Kraków/Uczenie Maszynowe - Praca zaliczeniowa/R_Project_Loans_Paid_Predictions/Projekt_Zaliczeniowy_Loans_Predictions/.Rproj.user/shared/notebooks/E77C208C-Wizualizacje/1/s/c4q5yhl3fq2uw_t/3b8364017c274b3eb87ea77673541497.snapshot', prawdopodobny powód 'No such file or directory'
+"
+"2","Błąd w poleceniu 'gzfile(file, ""wb"")':nie można otworzyć połączenia
+"

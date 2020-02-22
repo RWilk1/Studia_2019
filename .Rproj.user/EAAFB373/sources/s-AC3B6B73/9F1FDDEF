@@ -8,14 +8,14 @@
     "hash" : "0",
     "id" : "9F1FDDEF",
     "lastKnownWriteTime" : 1582216032,
-    "last_content_update" : 1582216032144,
+    "last_content_update" : 1582363727017,
     "path" : "D:/OneDrive/Studia podyplomowe/Data_Scientist_Kraków/Uczenie Maszynowe - Praca zaliczeniowa/R_Project_Loans_Paid_Predictions/Projekt_Zaliczeniowy_Loans_Predictions/Pakiet_dbplyr.Rmd",
     "project_path" : "Pakiet_dbplyr.Rmd",
     "properties" : {
-        "cursorPosition" : "286,0",
+        "cursorPosition" : "68,18",
         "docOutlineVisible" : "0",
-        "last_setup_crc32" : "DBAAECACbb338d19",
-        "scrollLine" : "260",
+        "last_setup_crc32" : "",
+        "scrollLine" : "60",
         "tempName" : "Untitled1"
     },
     "read_only" : false,

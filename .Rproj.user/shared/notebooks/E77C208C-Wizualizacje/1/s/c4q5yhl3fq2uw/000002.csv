@@ -1,0 +1,4 @@
+"0","# Wykres z punktami i wygładzoną linią."
+"0","ggplot(data = midwest) +"
+"0","  geom_point(mapping = aes(x = percollege, y = percadultpoverty)) +"
+"0","  geom_smooth(mapping = aes(x = percollege, y = percadultpoverty))"
