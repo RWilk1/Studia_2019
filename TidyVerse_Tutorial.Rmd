@@ -1,0 +1,107 @@
+---
+title: "TidyVerse_Tutorial"
+author: "autor: RW"
+date: "data: 23.02.2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Wprowadznie i instalacja
+
+Instalowanie pakietu, który zawiera zestaw pakietów
+```{r}
+install.packages("tidyverse")
+library("tidyverse")
+search()
+```
+
+### Pakiet tibble
+Pakiet tibble dodaje ulepszoną ramkę danych zwaną: "tibble" ale generalnie tibble = data.frame
+```{r}
+# Tworzenie nowych danych typu tibble "ręcznie" podając wartości wektorów
+tdf = tibble(x = 1:100, y = rnorm(1:100))
+print(tdf, n = 30)
+class(tdf) # Funkcja sprawdza rodzaj danych
+```
+
+Tworzenie danych typu tibble
+```{r}
+iris
+DataSet <- as.tibble(iris)
+DataSet
+```
+
+Zliczanie wartości unikatowych
+```{r}
+DataSet <- as.tibble(iris)
+DataSet %>% group_by(Species) %>% summarize(count=n())
+```
+
+
+```{r}
+# Sprawdzanie jakie DataSet-y są już zainstalowane
+# data() 
+class(mtcars)
+mtcars_small <- mtcars[1:2, 1:5]
+mtcars_small
+rwSums
+```
+
+### Biblioteka: tidyr, czyszczenie rzeczywistych danych
+```{r}
+who
+```
+
+„Przydatne funkcje
+do tworzenia nowych zmiennych” na stronie 69 oraz „Przydatne funkcje sumaryczne” na
+stronie 78,
+
+### Inne istotne funkcje
+```{r}
+names(iris) # Pokazyawnie nazw kolumn
+min(Sepal.Length)
+apply(iris,2,min)
+max(Sepal.Length)
+range(Sepal.Length)
+var(Sepal.Length)
+sd(Sepal.Length)
+IQR(Sepal.Length)
+summary(Sepal.Length)
+mean(Sepal.Length)
+median(Sepal.Length)
+
+x <- round(runif(100,0,10))
+x
+freq <- table(x)
+freq
+
+
+unusual <- diamonds %>% 
+  filter(y < 3 | y > 20) %>% 
+  arrange(y)
+unusual
+
+# Missing values
+diamonds2 <- diamonds %>% 
+  mutate(y = ifelse(y < 3 | y > 20, NA, y))
+
+#find out which package a function comes from
+find("apropos")
+
+# Grupowanie
+daily <- flights %>%
+  mutate(date=make_date(year, month, day)) %>%
+  group_by(date) %>%
+  summarise(n=n())
+daily
+
+titanic$Pclass <- as.factor(titanic$Pclass)
+
+filter(cut_depth, depth > 55, depth < 70)
+
+```
+
+

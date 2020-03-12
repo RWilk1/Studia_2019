@@ -1,0 +1,6 @@
+"0","dataset4  <- dataset4 %>% mutate(delinq_2yrs3 = coalesce(delinq_2yrs3, ""Brak opóżnień""))
+dataset4 %>% count(dataset4$delinq_2yrs3)
+"
+"2","Błąd w poleceniu 'tempfile(pattern = ""_rs_rdf_"", tmpdir = outputFolder, fileext = "".rdf"")':
+  nazwa tymczasowa jest zbyt długa
+"

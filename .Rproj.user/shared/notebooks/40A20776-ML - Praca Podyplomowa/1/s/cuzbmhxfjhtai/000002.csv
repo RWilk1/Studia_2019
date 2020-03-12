@@ -1,0 +1,6 @@
+"0","dataset <- read_excel(""LoanStats_DataSet.xlsx"")"
+"0","dataset <- as.tibble(dataset)"
+"0","dataset"
+"2","Błąd w poleceniu 'tempfile(pattern = ""_rs_rdf_"", tmpdir = outputFolder, fileext = "".rdf"")':
+  nazwa tymczasowa jest zbyt długa
+"

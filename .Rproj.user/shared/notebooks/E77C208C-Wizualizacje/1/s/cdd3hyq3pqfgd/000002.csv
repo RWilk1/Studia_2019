@@ -1,0 +1,6 @@
+"0","# Tworzenie pogrupowanych kolumn z liczbą osób różnych ras w każdym stanie (opcja dodge)."
+"0","ggplot(state_race_long) +"
+"0","  geom_col("
+"0","  mapping = aes(x = state, y = population, fill = race), position = ""dodge"")"
+"2","Błąd w poleceniu 'ggplot(state_race_long)':nie udało się znaleźć funkcji 'ggplot'
+"

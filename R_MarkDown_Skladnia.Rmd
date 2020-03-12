@@ -1,0 +1,25 @@
+---
+title: "Jezyk_R_Markdown"
+author: "RW"
+date: "23 02 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library("knitr")
+search()
+```
+
+1 Rysowanie ładniejszych tabel danych
+```{r}
+letters <- c("a", "b", "c", "d")
+numbers <- 1:4
+df <- data.frame(letters = letters, numbers = numbers)
+# "Zwracanie" tabeli w celu jej wyświetlenia.
+kable(df)
+```
+

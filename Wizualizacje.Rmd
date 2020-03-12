@@ -14,14 +14,15 @@ knitr::opts_chunk$set(echo = TRUE)
 1. Pakiet ggplot2 - instalowanie pakietu
 ```{r pressure, echo = FALSE}
 # install.packages("ggplot2")
-install.packages("ggrepel")
-installed.packages("ggrepel")
+# install.packages("ggrepel")
+# installed.packages("ggrepel")
 
 # Wczytywanie potrzebnych bibliotek
 library("ggplot2")
 library("dplyr")
 library("tidyr")
 library("ggrepel")
+library("knitr")
 
 search()
 ```
@@ -269,6 +270,7 @@ y = "Wskaźnik ubóstwa wśród dorosłych", # Etykieta dla osi x.
 color = "Miejsce zamieszkania" # Etykieta legendy dla atrybutu "color".
 )
 ```
+
 
 
 

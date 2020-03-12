@@ -1,0 +1,5 @@
+"0","kable(df)
+"
+"2","Błąd w poleceniu 'tempfile(""_rs_html_"", tmpdir = ctx$outputFolder, fileext = "".html"")':
+  nazwa tymczasowa jest zbyt długa
+"
