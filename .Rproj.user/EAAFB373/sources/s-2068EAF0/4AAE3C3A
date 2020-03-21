@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1582477416445.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "16|6|24|0|\n27|6|31|0|\n34|6|43|0|\n71|6|103|0|\n118|6|132|0|\n135|6|172|0|\n175|6|186|0|\n189|6|211|0|\n214|6|234|0|\n237|6|247|0|\n250|6|295|0|\n298|6|312|0|\n315|6|365|0|\n368|6|384|0|\n387|6|420|0|\n423|6|435|0|\n438|6|450|0|\n453|6|479|0|\n",
+    "hash" : "0",
+    "id" : "4AAE3C3A",
+    "lastKnownWriteTime" : 1584821837,
+    "last_content_update" : 1584821837150,
+    "path" : "D:/OneDrive/Studia podyplomowe/Data_Scientist_Kraków/Uczenie Maszynowe - Praca zaliczeniowa/R_Project_Loans_Paid_Predictions/Projekt_Zaliczeniowy_Loans_Predictions/ML - Praca Podyplomowa.Rmd",
+    "project_path" : "ML - Praca Podyplomowa.Rmd",
+    "properties" : {
+        "cursorPosition" : "386,53",
+        "docOutlineVisible" : "0",
+        "last_setup_crc32" : "2068EAF0bb338d19",
+        "scrollLine" : "298",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

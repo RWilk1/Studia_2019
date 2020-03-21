@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ### Pobieranie danych wejściowych
-Zintegrowanych zbiór danych o pożyczkach został pobrany ze strony
+Zintegrowanych zbiór danych o pożyczkach (z lat 2007 - 2011) został pobrany ze strony
 <https://data.world/rwilk/test1/workspace/file?agentid=jaypeedevlin&datasetid=lending-club-loan-data-2007-11&filename=LCDataDictionary.csv#>
 
 *Wczytywanie potrzebnych bibliotek*
@@ -31,26 +31,25 @@ dataset <- as.tibble(dataset)
 dataset
 ```
 
-### *Eksploracja zbioru danych*
+*Eksploracja zbioru danych*
 ```{r}
 # Liczba wierszy w połączonym zbiorze danych wynosi
 count(dataset)
 # 42541
 
-# Sprawdznie występujących zmiennych
+# Sprawdznie występujących zmiennych w zbiorze danych
 names(dataset) 
 # Liczba wierszy w połączonym zbiorze danych to: 42 541
 # Liczba kolumn to: 115
 ```
 
-
 *Wybór kolumn do analiz*
-Ze względu na zawartość informacji w poszczególnych kolumnach do dalszej analizy zostały wybrane następujące najbardziej wartościowe zmienne, które mogą mieć wpływ na spłacalność lub niespłacalność zaciągniętych pożyczek
+Ze względu na zawartość informacji w poszczególnych kolumnach do dalszej analizy zostały wybrane następujące najbardziej wartościowe zmienne w predykcji czy dana osoba spłaci, czy nie spłaci pożyczki
 ```{r}
 # do dalszej analizy zostaną wybrane następujące zmienne
 dataset2 <- dataset %>% select(id # Unikatowych numer udzielonego kredytu - id wiersza
 ,loan_status # Status spłacania pożyczki - zmienna zależna
-,addr_state # Stan pożyczkobiorcy
+,addr_state # Stan zamieszkania pożyczkobiorcy
 ,annual_inc # Roczne dochody pożyczkobiorcy
 ,application_type # Liczba pożyczkobiorców przypisana do pożyczki
 ,delinq_2yrs # Liczba 30 dniowych opóźnień w spłacie kredytu
@@ -62,13 +61,13 @@ dataset2 <- dataset %>% select(id # Unikatowych numer udzielonego kredytu - id w
 ,issue_d # Data udzielenia pożyczki
 ,loan_amnt # Kwota pożyczki, ewentualnie zmniejszona p
 ,purpose # Cel pożyczki
-,term # Liczba lat do spłacenia
+,term # Liczba rat do spłacenia
 )
 
 View(dataset2)
 ```
 
-*Eksploracja danych, zmienna: loan_status*
+*Eksploracja danych, zmienna: loan_status (zmienna zależna)*
 Jest to zmienna zależna której stan będzie testowany
 ```{r}
 # Sprawdzanie typu danych
@@ -103,30 +102,6 @@ count(dataset4)
 
 table(dataset4$loan_status2)
 ```
-Sprawdzić co to są struktury danych w: Towards Data Science
-
-<https://www.statmethods.net/graphs/bar.html>
-* Wizualizacja danych *
-```{r}
-# Wizualizacja danych
-barplot(count(dataset4$loan_status))
-
-ds_PieChart <- dataset4 %>% count(dataset4$loan_status2)
-count(table(ds_PieChart))
-class(ds_PieChart)
-
-pie(table(ds_PieChart))
-box() 
-
-ggplot(dataset4, aes(loan_status)) + geom_bar(stat="count") + theme(legend.position = "bottom")
-
-# Wizualizacja danych 2
-
-dataset5 <- count(dataset4$loan_status2)
-
-ggplot(dataset4, aes(loan_status)) + geom_bar(stat="count") + theme(legend.position = "bottom")
-```
-
 
 *Łączenie kategorii zmiennej zależnej*
 W celu przeprowadzenia dalszej analizy danych należy ze zmiennej zależnej statusy spłacenia pożyczki utworzyć dwie kategorie. 
@@ -140,8 +115,7 @@ W celu przeprowadzenia dalszej analizy danych należy ze zmiennej zależnej stat
 - Late (16-30 days)
 - Late (31-120 days)
 - Default
-
-*Analiza zmiennej: addr_state*
+*Analiza zmiennej: addr_state, czyli skrócone nazwy stanów*
 ```{r}
 # Czyli skrócone nazwa stanów, są to dane typu tekstowego
 class(dataset4$addr_state)
@@ -156,10 +130,9 @@ dataset4 %>% count(dataset4$addr_state)
 # Sprawdzanie ile wartości niedostępnych NA znajduje się w tej zmiennej
 sum(is.na(dataset4$addr_state))
 # 0, wszystkie wartości są zdefiniowane
-
 ```
 
-*Zmienna: annual_inc*
+*Zmienna: annual_inc, czyli dochód roczny pożyczkodawcy*
 ```{r}
 ##########################################################
 # Dane typu numerycznego, zmienna ciągła
@@ -339,7 +312,6 @@ sum(is.na(dataset4$addr_state))
 # Nie ma potrzeby dokonywania przekształceń w celu redukcji liczby kategorii
 ```
 
-
 *int_rate # Oprocentowanie pożyczki*
 ```{r}
 # Zmienna numeryczna ale przechowywana jako zmienna typu tekstowego (character)
@@ -484,7 +456,7 @@ dataset5 <- dataset4 %>% select(
 id # Unikatowych numer udzielonego kredytu - id wiersza
 ,loan_status # Status spłacenia pożyczki - zmienna zależna
 ,loan_status2 # Status spłacenia pożyczki zmienna zrekodowana
-,addr_state # Stan pożyczkobiorcy
+,addr_state # Stan zameldowania pożyczkobiorcy
 ,annual_inc # Roczne dochody pożyczkobiorcy
 ,annual_inc2 # Roczne dochodzy zmienna zrekodowane na 6 kategorii
 ,application_type # Liczba pożyczkobiorców przypisana do pożyczki
@@ -507,8 +479,8 @@ id # Unikatowych numer udzielonego kredytu - id wiersza
 )
 ```
 
-
 *Zapisywanie danych do pliku zewnętrznego*
+*KONIEC*
 ```{r}
 write.csv(dataset5,"C:\\Users\\Gwiazda_Smierci\\Desktop\\Loans_Data.csv", row.names = FALSE)
 ```
